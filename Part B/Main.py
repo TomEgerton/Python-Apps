@@ -8,6 +8,6 @@ def client():
     from_server = sock.recv(4096)
     sock.close()
     print(from_server.decode())
-    
 
 
+client()
