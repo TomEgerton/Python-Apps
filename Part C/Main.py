@@ -1,17 +1,15 @@
 import signal
-import os
 import time
+import random
 
+def receive_alarm(signum, stack):
+    print ('AHHHHHHHHHHHHHHHH 👻')
 
-def receive_signal(signum, stack):
-    print('Received:', signum)
+ranNum = random.randint(2,9)
+# Call receive_alarm in 2 seconds
+signal.signal(signal.SIGALRM, receive_alarm)
+signal.alarm(ranNum)
 
-
-signal.signal(signal.SIGUSR1, receive_signal)
-signal.signal(signal.SIGUSR2, receive_signal)
-
-print('My PID is:', os.getpid())
-
-while True:
-    print('Waiting...')
-    time.sleep(3)
+print ('Start of the random whacky scream machine:', time.ctime())
+time.sleep(10)
+print(f'You got spooked after {ranNum} seconds')
