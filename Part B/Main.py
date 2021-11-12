@@ -1,7 +1,6 @@
 import socket
 
-def client():
-    query = input("Ask the magic ball a question: ")
+def client(query):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect(('127.0.0.1', 5000))
     sock.send(query.encode())
@@ -10,4 +9,6 @@ def client():
     print(from_server.decode())
 
 
-client()
+while True:
+    query = input("Ask the magic ball a question: ")
+    client(query)
